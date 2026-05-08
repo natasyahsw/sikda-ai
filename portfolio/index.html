@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Showcase — SIKDA AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f0f2f8;
+      color: #1e293b;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .showcase {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 48px;
+      position: relative;
+    }
+
+    /* Decorative blob */
+    .showcase::after {
+      content: '';
+      position: absolute;
+      right: -80px;
+      bottom: -40px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .showcase-subtitle {
+      font-style: italic;
+      font-size: 15px;
+      color: #1e3a8a;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .showcase-header {
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .showcase-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 900;
+      color: #0f172a;
+      line-height: 1.1;
+    }
+
+    .showcase-role {
+      font-size: 16px;
+      font-style: italic;
+      color: #475569;
+      padding-top: 8px;
+    }
+
+    /* Main content layout */
+    .showcase-body {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      gap: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Device Mockups */
+    .mockups-area {
+      position: relative;
+      min-height: 420px;
+    }
+
+    .device {
+      position: absolute;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.1);
+      transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    .device:hover {
+      transform: translateY(-6px) scale(1.02);
+      z-index: 10;
+    }
+
+    .device img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .device-laptop {
+      width: 420px;
+      height: 260px;
+      top: 0;
+      left: 0;
+      z-index: 3;
+      border: 3px solid #1e293b;
+      border-radius: 12px;
+    }
+
+    .device-laptop::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 22px;
+      background: #1e293b;
+      z-index: 2;
+      border-radius: 9px 9px 0 0;
+    }
+
+    .device-laptop::after {
+      content: '● ● ●';
+      position: absolute;
+      top: 3px;
+      left: 10px;
+      font-size: 7px;
+      color: #64748b;
+      z-index: 3;
+      letter-spacing: 3px;
+    }
+
+    .device-laptop img {
+      margin-top: 22px;
+      height: calc(100% - 22px);
+    }
+
+    .device-tablet {
+      width: 260px;
+      height: 180px;
+      top: 20px;
+      right: 0;
+      z-index: 4;
+      border: 3px solid #334155;
+      border-radius: 14px;
+    }
+
+    .device-phone {
+      width: 140px;
+      height: 240px;
+      bottom: 0;
+      left: 60px;
+      z-index: 5;
+      border: 3px solid #334155;
+      border-radius: 20px;
+      background: #0f172a;
+    }
+
+    .device-phone::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 5px;
+      background: #334155;
+      border-radius: 4px;
+      z-index: 2;
+    }
+
+    .device-phone img {
+      border-radius: 17px;
+      padding: 2px;
+    }
+
+    .device-small {
+      width: 220px;
+      height: 150px;
+      bottom: 30px;
+      right: 20px;
+      z-index: 6;
+      border: 3px solid #334155;
+      border-radius: 12px;
+    }
+
+    /* Details Section */
+    .details-area {
+      padding-top: 8px;
+    }
+
+    .bullet-list {
+      list-style: disc;
+      padding-left: 20px;
+      margin-bottom: 32px;
+    }
+
+    .bullet-list li {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: #1e293b;
+      margin-bottom: 12px;
+    }
+
+    .bullet-list li strong {
+      color: #0f172a;
+    }
+
+    /* Links */
+    .project-links {
+      margin-bottom: 28px;
+    }
+
+    .project-links p {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .project-links a {
+      color: #1e3a8a;
+      font-style: italic;
+      text-decoration: none;
+      font-weight: 500;
+      word-break: break-all;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Tech Stack */
+    .tech-label {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 16px;
+    }
+
+    .tech-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .tech-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tech-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff;
+      transition: transform 0.3s;
+    }
+
+    .tech-icon:hover { transform: scale(1.12); }
+
+    .tech-icon img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    .tech-name {
+      font-size: 11px;
+      color: #475569;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* Decorative gear */
+    .gear-deco {
+      position: fixed;
+      right: -60px;
+      bottom: -60px;
+      width: 240px;
+      height: 240px;
+      opacity: 0.06;
+      z-index: 0;
+    }
+
+    @media (max-width: 900px) {
+      .showcase { padding: 32px 20px; }
+      .showcase-body { grid-template-columns: 1fr; }
+      .mockups-area { min-height: 320px; }
+      .device-laptop { width: 300px; height: 190px; }
+      .device-tablet { width: 200px; height: 140px; }
+      .device-phone { width: 110px; height: 190px; }
+      .device-small { width: 170px; height: 120px; }
+      .showcase-title { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="showcase">
+    <p class="showcase-subtitle">Project Showcase</p>
+    <div class="showcase-header">
+      <h1 class="showcase-title">SIKDA AI Platform</h1>
+      <span class="showcase-role">Front-End Developer</span>
+    </div>
+
+    <div class="showcase-body">
+      <!-- Left: Device Mockups -->
+      <div class="mockups-area">
+        <div class="device device-laptop">
+          <img src="screenshots/dashboard.png" alt="Dashboard SIKDA AI">
+        </div>
+        <div class="device device-tablet">
+          <img src="screenshots/aichat.png" alt="AI Chat Assistant">
+        </div>
+        <div class="device device-phone">
+          <img src="screenshots/anomaly.png" alt="Deteksi Anomali">
+        </div>
+        <div class="device device-small">
+          <img src="screenshots/transparency.png" alt="Transparansi Anggaran">
+        </div>
+      </div>
+
+      <!-- Right: Details -->
+      <div class="details-area">
+        <ul class="bullet-list">
+          <li>Built an <strong>AI-powered regional financial dashboard</strong> (SIKDA AI) using React and Vite for the <strong>Microsoft AI Impact Challenge Hackathon</strong>, enabling real-time APBD budget monitoring across 8 sectors and 10 sub-districts.</li>
+          <li>Engineered <strong>4 core modules</strong> — Interactive Dashboard with Recharts visualizations, Budget Transparency Portal with drill-down search, <strong>AI-Powered Anomaly Detection</strong> system, and an <strong>Azure OpenAI Chatbot</strong> for natural-language financial Q&A.</li>
+          <li>Designed a sleek <strong>dark-mode glassmorphism UI</strong> with responsive layout, gradient cards, animated transitions, and donut/area/bar charts to present Rp 8.75T budget data intuitively.</li>
+          <li>Integrated <strong>Microsoft Azure AI</strong> services with intelligent fallback to rule-based analysis, supporting multi-city data switching (Bandung, Surabaya, Semarang).</li>
+        </ul>
+
+        <div class="project-links">
+          <p><em>Github Link:</em> <a href="https://github.com/natasyahsw/sikda-ai" target="_blank">https://github.com/natasyahsw/sikda-ai</a></p>
+          <p><em>Live Demo:</em> <a href="https://sikda-ai.vercel.app" target="_blank">https://sikda-ai.vercel.app</a></p>
+        </div>
+
+        <p class="tech-label">Tech:</p>
+        <div class="tech-grid">
+          <div class="tech-item">
+            <div class="tech-icon" style="background: linear-gradient(135deg, #61DAFB, #087EA4);">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="11" ry="4.2" fill="none" stroke="#fff" stroke-width="1.2"/><ellipse cx="12" cy="12" rx="11" ry="4.2" fill="none" stroke="#fff" stroke-width="1.2" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="11" ry="4.2" fill="none" stroke="#fff" stroke-width="1.2" transform="rotate(120 12 12)"/></svg>
+            </div>
+            <span class="tech-name">React</span>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon" style="background: linear-gradient(135deg, #646CFF, #4338CA);">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="#fff"><polygon points="12,2 22,8.5 22,19 12,22 2,19 2,8.5"/></svg>
+            </div>
+            <span class="tech-name">Vite</span>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon" style="background: linear-gradient(135deg, #F7DF1E, #D4A800); color: #000; font-size: 18px; font-weight: 900;">JS</div>
+            <span class="tech-name">JavaScript</span>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon" style="background: linear-gradient(135deg, #22D3EE, #0891B2);">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="#fff" stroke-width="1.8"/><path d="M7 17V7h4a3 3 0 0 1 0 6H7m10-6v10" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="tech-name">Recharts</span>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon" style="background: linear-gradient(135deg, #0078D4, #005A9E);">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z" fill="none" stroke="#fff" stroke-width="1.5"/></svg>
+            </div>
+            <span class="tech-name">Azure AI</span>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon" style="background: linear-gradient(135deg, #000, #333);">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><polygon points="12,1 23,21 1,21" fill="none" stroke="#fff" stroke-width="1.8"/></svg>
+            </div>
+            <span class="tech-name">Vercel</span>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon" style="background: linear-gradient(135deg, #F05032, #C23616);">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><line x1="12" y1="1" x2="12" y2="8" stroke="#fff" stroke-width="2"/><line x1="12" y1="16" x2="12" y2="23" stroke="#fff" stroke-width="2"/><line x1="4" y1="4" x2="9" y2="9" stroke="#fff" stroke-width="2"/></svg>
+            </div>
+            <span class="tech-name">Git</span>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon" style="background: linear-gradient(135deg, #264DE4, #1B3B99);">
+              <span style="font-size: 16px; font-weight: 800;">CSS</span>
+            </div>
+            <span class="tech-name">CSS3</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative SVG gear -->
+  <svg class="gear-deco" viewBox="0 0 200 200" fill="#1e3a8a">
+    <path d="M100 20a80 80 0 1 0 0 160 80 80 0 1 0 0-160zm0 120a40 40 0 1 1 0-80 40 40 0 0 1 0 80z"/>
+    <rect x="90" y="0" width="20" height="40" rx="5"/>
+    <rect x="90" y="160" width="20" height="40" rx="5"/>
+    <rect x="0" y="90" width="40" height="20" rx="5"/>
+    <rect x="160" y="90" width="40" height="20" rx="5"/>
+    <rect x="22" y="22" width="20" height="40" rx="5" transform="rotate(45 32 42)"/>
+    <rect x="138" y="138" width="20" height="40" rx="5" transform="rotate(45 148 158)"/>
+    <rect x="138" y="22" width="20" height="40" rx="5" transform="rotate(-45 148 42)"/>
+    <rect x="22" y="138" width="20" height="40" rx="5" transform="rotate(-45 32 158)"/>
+  </svg>
+
+</body>
+</html>
